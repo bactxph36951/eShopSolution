@@ -2,9 +2,7 @@
 using eShopSolution.ViewModels.Catalog.ProductImages;
 using eShopSolution.ViewModels.Catalog.Products;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Globalization;
 using System.Threading.Tasks;
 
 namespace eShopSolution.BackendApi.Controllers
@@ -17,7 +15,7 @@ namespace eShopSolution.BackendApi.Controllers
         private readonly IPublicProductService _publicProductService;
         private readonly IManageProductService _manageProductService;
 
-        public ProductsController(IPublicProductService publicProductService, 
+        public ProductsController(IPublicProductService publicProductService,
             IManageProductService manageProductService)
         {
             _publicProductService = publicProductService;
@@ -26,7 +24,7 @@ namespace eShopSolution.BackendApi.Controllers
 
         //localhost:port/products?pageIndex=1&pageSize=10&CategoryId=
         [HttpGet("{languageId}")]
-        public async Task<IActionResult> GetAllPaging(string languageId, [FromQuery]GetPublicProductPagingRequest request)
+        public async Task<IActionResult> GetAllPaging(string languageId, [FromQuery] GetPublicProductPagingRequest request)
         {
             var products = await _publicProductService.GetAllByCategoryId(languageId, request);
 
@@ -47,7 +45,7 @@ namespace eShopSolution.BackendApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromForm]ProductCreateRequest request)
+        public async Task<IActionResult> Create([FromForm] ProductCreateRequest request)
         {
             if (!ModelState.IsValid)
             {
@@ -63,11 +61,11 @@ namespace eShopSolution.BackendApi.Controllers
 
             var product = await _manageProductService.GetById(productId, request.LanguageId);
 
-            return CreatedAtAction(nameof(GetById), new {id = productId}, product);
+            return CreatedAtAction(nameof(GetById), new { id = productId }, product);
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromForm]ProductUpdateRequest request)
+        public async Task<IActionResult> Update([FromForm] ProductUpdateRequest request)
         {
             if (!ModelState.IsValid)
             {

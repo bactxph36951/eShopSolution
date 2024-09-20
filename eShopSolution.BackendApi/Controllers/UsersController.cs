@@ -1,7 +1,6 @@
 ﻿using eShopSolution.Application.System.Users;
 using eShopSolution.ViewModels.System.Users;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -34,7 +33,7 @@ namespace eShopSolution.BackendApi.Controllers
                 return BadRequest("UserName or Password is incorrect");
             }
 
-            return Ok(new {token = resultToken});
+            return Ok(new { token = resultToken });
         }
 
         [HttpPost("register")]
