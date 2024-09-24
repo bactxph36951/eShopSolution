@@ -14,6 +14,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace eShopSolution.AdminApp.Controllers
 {
@@ -28,9 +29,36 @@ namespace eShopSolution.AdminApp.Controllers
             _configuration = configuration;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string keyword, int pageIndex = 1, int pageSize = 10)
         {
-            return View();
+            if (pageIndex < 1)
+            {
+                pageIndex = 1;  // Đặt lại pageIndex về giá trị mặc định nếu giá trị âm
+            }
+
+            if (pageSize < 1)
+            {
+                pageSize = 10;  // Đặt lại pageSize về giá trị mặc định nếu giá trị âm
+            }
+
+            var sessions = HttpContext.Session.GetString("Token");
+            if (string.IsNullOrEmpty(sessions))
+            {
+                // Xử lý trường hợp không có token
+                TempData["ErrorMessage"] = "Bạn cần đăng nhập để tiếp tục.";
+                return RedirectToAction("Login", "User");
+            }
+            var request = new GetUserPagingRequest()
+            {
+                BearerToken = sessions,
+                Keyword = keyword,
+                PageSize = pageSize,
+                PageIndex = pageIndex
+            };
+
+            var data = await _userApiClient.GetUsersPagings(request);
+
+            return View(data);
         }
 
         [HttpGet]
@@ -54,8 +82,11 @@ namespace eShopSolution.AdminApp.Controllers
             var authProperties = new AuthenticationProperties
             {
                 ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-                IsPersistent = true
+                IsPersistent = false
             };
+
+            HttpContext.Session.SetString("Token", token);
+
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 userPrincipal,
@@ -67,6 +98,7 @@ namespace eShopSolution.AdminApp.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Remove("Token");
             return RedirectToAction("Login", "User");
         }
 
