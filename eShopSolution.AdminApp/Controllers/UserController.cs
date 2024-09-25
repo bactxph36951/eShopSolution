@@ -18,7 +18,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace eShopSolution.AdminApp.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly IUserApiClient _userApiClient;
         private readonly IConfiguration _configuration;
@@ -42,12 +42,6 @@ namespace eShopSolution.AdminApp.Controllers
             }
 
             var sessions = HttpContext.Session.GetString("Token");
-            if (string.IsNullOrEmpty(sessions))
-            {
-                // Xử lý trường hợp không có token
-                TempData["ErrorMessage"] = "Bạn cần đăng nhập để tiếp tục.";
-                return RedirectToAction("Login", "User");
-            }
             var request = new GetUserPagingRequest()
             {
                 BearerToken = sessions,
@@ -62,37 +56,29 @@ namespace eShopSolution.AdminApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Login()
+        public IActionResult Create()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginRequest request)
+        public async Task<IActionResult> Create(RegisterRequest request)
         {
             if (!ModelState.IsValid)
             {
-                return View(ModelState);
+                return View();
             }
 
-            var token = await _userApiClient.Authenticate(request);
-
-            var userPrincipal = this.ValidateToken(token);
-            var authProperties = new AuthenticationProperties
+            var result = await _userApiClient.RegisterUser(request);
+            if (result)
             {
-                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-                IsPersistent = false
-            };
+                return RedirectToAction("Index");
+            }
 
-            HttpContext.Session.SetString("Token", token);
-
-            await HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                userPrincipal,
-                authProperties);
-            return RedirectToAction("Index", "Home");
+            return View(request);
         }
+
+        
 
         [HttpPost]
         public async Task<IActionResult> Logout()
@@ -102,17 +88,6 @@ namespace eShopSolution.AdminApp.Controllers
             return RedirectToAction("Login", "User");
         }
 
-        private ClaimsPrincipal ValidateToken(string jwtToken)
-        {
-            IdentityModelEventSource.ShowPII = true;
-            SecurityToken validatedToken;
-            TokenValidationParameters validationParameters = new TokenValidationParameters();
-            validationParameters.ValidateLifetime = true;
-            validationParameters.ValidAudience = _configuration["Tokens:Issuer"];
-            validationParameters.ValidIssuer = _configuration["Tokens:Issuer"];
-            validationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
-            ClaimsPrincipal principal = new JwtSecurityTokenHandler().ValidateToken(jwtToken, validationParameters, out validatedToken);
-            return principal;
-        }
+        
     }
 }
