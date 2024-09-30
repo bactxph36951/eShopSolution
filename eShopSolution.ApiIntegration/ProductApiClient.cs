@@ -1,5 +1,4 @@
-﻿using eShopSolution.ApiIntegration;
-using eShopSolution.Utilities.Constants;
+﻿using eShopSolution.Utilities.Constants;
 using eShopSolution.ViewModels.Catalog.Products;
 using eShopSolution.ViewModels.Common;
 using Microsoft.AspNetCore.Http;
@@ -107,6 +106,12 @@ namespace eShopSolution.ApiIntegration
         {
             var data = await GetAsync<ProductVm>($"/api/products/{id}/{languageId}");
 
+            return data;
+        }
+
+        public async Task<List<ProductVm>> GetFeaturedProducts(string languageId, int take)
+        {
+            var data = await GetListAsync<ProductVm>($"/api/products/featured/{languageId}/{take}");
             return data;
         }
     }

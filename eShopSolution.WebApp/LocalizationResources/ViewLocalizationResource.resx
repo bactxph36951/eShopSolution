@@ -118,27 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Contact" xml:space="preserve">
-    <value>Liên hệ</value>
+    <value>Contact</value>
   </data>
   <data name="English" xml:space="preserve">
-    <value>Tiếng Anh</value>
+    <value>English</value>
+    <comment>Layouts</comment>
   </data>
   <data name="Featured Products" xml:space="preserve">
-    <value>Sản phẩm nổi bật</value>
+    <value>Featured Products</value>
+    <comment>/Home/Index</comment>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Đăng nhập</value>
+    <value>Login</value>
+    <comment>Layouts</comment>
   </data>
   <data name="Vietnamese" xml:space="preserve">
-    <value>Tiếng Việt</value>
+    <value>Vietnamese</value>
+    <comment>Layouts</comment>
   </data>
   <data name="VIEW" xml:space="preserve">
-    <value>XEM</value>
+    <value>VIEW</value>
+    <comment>/Home/Index</comment>
   </data>
   <data name="Specials Offer" xml:space="preserve">
-    <value>Khuyến mãi</value>
+    <value>Specials Offer</value>
+    <comment>Layouts</comment>
   </data>
   <data name="Delivery" xml:space="preserve">
-    <value>Giao hàng</value>
+    <value>Delivery</value>
+    <comment>Layouts</comment>
   </data>
 </root>

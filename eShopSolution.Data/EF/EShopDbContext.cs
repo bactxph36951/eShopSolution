@@ -19,11 +19,14 @@ namespace eShopSolution.Data.EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Configure using Fluent API
+            modelBuilder.ApplyConfiguration(new CartConfiguration());
+
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new ProductInCategoryConfiguration());
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
+
             modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryTranslationConfiguration());
             modelBuilder.ApplyConfiguration(new ContactConfiguration());
@@ -38,20 +41,14 @@ namespace eShopSolution.Data.EF
             modelBuilder.ApplyConfiguration(new SlideConfiguration());
 
             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
-            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x=> new {x.UserId, x.RoleId});
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x => new { x.UserId, x.RoleId });
             modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x => x.UserId);
+
             modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
-            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x=>x.UserId);
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
 
             //Data seeding
-            //modelBuilder.Entity<AppConfig>().HasData(
-            //    new AppConfig() { Key = "HomeTitle", Value = "This is homepage of eShopSolution" },
-            //    new AppConfig() { Key = "HomeKeyword", Value = "This is Keyword of eShopSolution" },
-            //    new AppConfig() { Key = "HomeDescription", Value = "This is Description of eShopSolution" }
-            //    );
-
             modelBuilder.Seed();
-
             //base.OnModelCreating(modelBuilder);
         }
 
@@ -59,7 +56,6 @@ namespace eShopSolution.Data.EF
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<AppConfig> AppConfigs { get; set; }
-
 
         public DbSet<Cart> Carts { get; set; }
 
@@ -77,9 +73,10 @@ namespace eShopSolution.Data.EF
 
         public DbSet<Promotion> Promotions { get; set; }
 
-
         public DbSet<Transaction> Transactions { get; set; }
+
         public DbSet<ProductImage> ProductImages { get; set; }
+
+        public DbSet<Slide> Slides { get; set; }
     }
-}                                                    
-                                                     
+}
