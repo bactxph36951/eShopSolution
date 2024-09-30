@@ -138,17 +138,17 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Key = "HomeTitle",
-                            Value = "This is homepage of eShopSolution"
+                            Value = "This is home page of eShopSolution"
                         },
                         new
                         {
                             Key = "HomeKeyword",
-                            Value = "This is Keyword of eShopSolution"
+                            Value = "This is keyword of eShopSolution"
                         },
                         new
                         {
                             Key = "HomeDescription",
-                            Value = "This is Description of eShopSolution"
+                            Value = "This is description of eShopSolution"
                         });
                 });
 
@@ -180,7 +180,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "b0b6b1ca-40df-4213-af75-6a0f1947418b",
+                            ConcurrencyStamp = "e0f0cc41-35ee-46f4-bd7b-fa1d045c1f71",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -257,7 +257,7 @@ namespace eShopSolution.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "934b1973-6075-4d9e-88f7-0644d6cf4cc0",
+                            ConcurrencyStamp = "0647003b-b414-45cb-9340-69cf7f590db1",
                             Dob = new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "tedu.international@gmail.com",
                             EmailConfirmed = true,
@@ -266,7 +266,7 @@ namespace eShopSolution.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "tedu.international@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJqnu4xLR2GQhTFyrrSZB/DZFD6CPEEbQxHm9JYN6OOaPnKqVX6/KaQwr3my29FCdA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBTnOghDppe9nic6knLeEln81xXhRlWTl4CY0VtdXBJs6j6vSqtLoHZD43Udz/N6Yw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -401,7 +401,7 @@ namespace eShopSolution.Data.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            LanguageId = "vi-VN",
+                            LanguageId = "vi",
                             Name = "Áo nam",
                             SeoAlias = "ao-nam",
                             SeoDescription = "Sản phẩm áo thời trang nam",
@@ -411,7 +411,7 @@ namespace eShopSolution.Data.Migrations
                         {
                             Id = 2,
                             CategoryId = 1,
-                            LanguageId = "en-US",
+                            LanguageId = "en",
                             Name = "Men Shirt",
                             SeoAlias = "men-shirt",
                             SeoDescription = "The shirt products for men",
@@ -421,17 +421,17 @@ namespace eShopSolution.Data.Migrations
                         {
                             Id = 3,
                             CategoryId = 2,
-                            LanguageId = "vi-VN",
+                            LanguageId = "vi",
                             Name = "Áo nữ",
-                            SeoAlias = "ao-nam",
+                            SeoAlias = "ao-nu",
                             SeoDescription = "Sản phẩm áo thời trang nữ",
-                            SeoTitle = "Sản phẩm áo thời trang nữ"
+                            SeoTitle = "Sản phẩm áo thời trang women"
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 2,
-                            LanguageId = "en-US",
+                            LanguageId = "en",
                             Name = "Women Shirt",
                             SeoAlias = "women-shirt",
                             SeoDescription = "The shirt products for women",
@@ -497,13 +497,13 @@ namespace eShopSolution.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "vi-VN",
+                            Id = "vi",
                             IsDefault = true,
                             Name = "Tiếng Việt"
                         },
                         new
                         {
-                            Id = "en-US",
+                            Id = "en",
                             IsDefault = false,
                             Name = "English"
                         });
@@ -612,7 +612,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2024, 9, 18, 10, 54, 9, 461, DateTimeKind.Local).AddTicks(5484),
+                            DateCreated = new DateTime(2024, 9, 30, 13, 49, 36, 300, DateTimeKind.Local).AddTicks(2764),
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,
@@ -735,19 +735,21 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Details = "Áo sơ mi nam Việt Tiến",
-                            LanguageId = "vi-VN",
-                            Name = "Áo sơ mi nam Việt Tiến",
+                            Description = "Áo sơ mi nam trắng Việt Tiến",
+                            Details = "Áo sơ mi nam trắng Việt Tiến",
+                            LanguageId = "vi",
+                            Name = "Áo sơ mi nam trắng Việt Tiến",
                             ProductId = 1,
-                            SeoAlias = "ao-so-mi-nam-viet-tien",
-                            SeoDescription = "Áo sơ mi nam Việt Tiến",
-                            SeoTitle = "Áo sơ mi nam Việt Tiến"
+                            SeoAlias = "ao-so-mi-nam-trang-viet-tien",
+                            SeoDescription = "Áo sơ mi nam trắng Việt Tiến",
+                            SeoTitle = "Áo sơ mi nam trắng Việt Tiến"
                         },
                         new
                         {
                             Id = 2,
+                            Description = "Viet Tien Men T-Shirt",
                             Details = "Viet Tien Men T-Shirt",
-                            LanguageId = "en-US",
+                            LanguageId = "en",
                             Name = "Viet Tien Men T-Shirt",
                             ProductId = 1,
                             SeoAlias = "viet-tien-men-t-shirt",
