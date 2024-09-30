@@ -3,7 +3,6 @@
 using eShopSolution.ApiIntegration;
 using eShopSolution.Utilities.Constants;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace eShopSolution.AdminApp.Controllers.Components
