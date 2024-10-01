@@ -1,14 +1,14 @@
-﻿using eShopSolution.AdminApp.Models;
-using eShopSolution.Utilities.Constants;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using eShopSolution.AdminApp.Models;
+using Microsoft.AspNetCore.Authorization;
+using eShopSolution.Utilities.Constants;
+using Microsoft.AspNetCore.Http;
 
 namespace eShopSolution.AdminApp.Controllers
 {
@@ -39,11 +39,12 @@ namespace eShopSolution.AdminApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Language(NavigationViewModel navigationViewModel)
+        public IActionResult Language(NavigationViewModel viewModel)
         {
-            HttpContext.Session.SetString(SystemConstants.AppSettings.DefaultLanguageId, 
-                navigationViewModel.CurrentLanguageId);
-            return RedirectToAction("Index");
+            HttpContext.Session.SetString(SystemConstants.AppSettings.DefaultLanguageId,
+                viewModel.CurrentLanguageId);
+
+            return Redirect(viewModel.ReturnUrl);
         }
     }
 }
