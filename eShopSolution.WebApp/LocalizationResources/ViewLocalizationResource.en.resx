@@ -141,4 +141,16 @@
   <data name="Delivery" xml:space="preserve">
     <value>Delivery</value>
   </data>
+  <data name="Latest Products" xml:space="preserve">
+    <value>Latest Products</value>
+  </data>
+  <data name="Add to" xml:space="preserve">
+    <value>Add to</value>
+  </data>
+  <data name="productUrl" xml:space="preserve">
+    <value>products</value>
+  </data>
+  <data name="categoryUrl" xml:space="preserve">
+    <value>categoryUrl</value>
+  </data>
 </root>

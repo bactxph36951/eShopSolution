@@ -148,4 +148,20 @@
     <value>Delivery</value>
     <comment>Layouts</comment>
   </data>
+  <data name="Latest Products" xml:space="preserve">
+    <value>Latest Products</value>
+    <comment>/Home/Index</comment>
+  </data>
+  <data name="Add to" xml:space="preserve">
+    <value>Add to</value>
+    <comment>/Home/Index</comment>
+  </data>
+  <data name="productUrl" xml:space="preserve">
+    <value>productUrl</value>
+    <comment>Layouts</comment>
+  </data>
+  <data name="categoryUrl" xml:space="preserve">
+    <value>categoryUrl</value>
+    <comment>Layouts</comment>
+  </data>
 </root>
