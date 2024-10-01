@@ -153,4 +153,34 @@
   <data name="categoryUrl" xml:space="preserve">
     <value>categoryUrl</value>
   </data>
+  <data name="available products" xml:space="preserve">
+    <value>available products</value>
+  </data>
+  <data name="New | Available" xml:space="preserve">
+    <value>New | Available</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="products" xml:space="preserve">
+    <value>products</value>
+  </data>
+  <data name="Sort By" xml:space="preserve">
+    <value>Sort By</value>
+  </data>
+  <data name="View details" xml:space="preserve">
+    <value>View details</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="More Details" xml:space="preserve">
+    <value>More Details</value>
+  </data>
+  <data name="Product Details" xml:space="preserve">
+    <value>Product Details</value>
+  </data>
+  <data name="Related Products" xml:space="preserve">
+    <value>Related Products</value>
+  </data>
 </root>

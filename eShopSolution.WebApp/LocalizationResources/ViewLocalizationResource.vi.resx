@@ -153,4 +153,34 @@
   <data name="categoryUrl" xml:space="preserve">
     <value>danh-muc</value>
   </data>
+  <data name="available products" xml:space="preserve">
+    <value>sản phẩm có sẵn</value>
+  </data>
+  <data name="New | Available" xml:space="preserve">
+    <value>Có sẵn</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Trang</value>
+  </data>
+  <data name="products" xml:space="preserve">
+    <value>san-pham</value>
+  </data>
+  <data name="Sort By" xml:space="preserve">
+    <value>sắp xếp theo</value>
+  </data>
+  <data name="View details" xml:space="preserve">
+    <value>Xem chi tiết</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Trang chủ</value>
+  </data>
+  <data name="More Details" xml:space="preserve">
+    <value>Xem thêm chi tiết</value>
+  </data>
+  <data name="Product Details" xml:space="preserve">
+    <value>Chi tiết sản phẩm</value>
+  </data>
+  <data name="Related Products" xml:space="preserve">
+    <value>Sản phẩm liên quan</value>
+  </data>
 </root>
