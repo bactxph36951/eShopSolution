@@ -1,4 +1,4 @@
-﻿﻿@model ProductCategoryViewModel
+﻿@model ProductCategoryViewModel
 
 @{
     ViewData["Title"] = Model.Category.Name + (Model.Products.PageIndex == 1 ? "" : " - " + _loc["Page"] + " " + Model.Products.PageIndex);
